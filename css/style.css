@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  font-family: "Prompt", sans-serif;
+  color: rgb(0, 0, 0);
+  font-weight: 300;
+}
+
+.info {
+  position: absolute;
+  padding: 20px;
+  font-family: "Prompt", sans-serif;
+  font-weight: 200;
+  font-size: 1.5rem;
+  right: 0;
+}
+
+.landing {
+  position: relative;
+  background-color: #ffffff;
+  height: 100vh;
+  width: 100vw;
+  border-bottom: 1px solid black;
+}
+
+/* .container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.title {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.title p {
+  font-size: 4rem;
+  text-align: center;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.title p span.typed-text,
+.par {
+  font-weight: normal;
+  font-family: "Prompt", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.title p span.cursor {
+  display: inline-block;
+  margin-left: 0.1rem;
+  width: 3px;
+}
+.title p span.cursor.typing {
+  animation: none;
+}
+
+.map {
+  max-width: 60%;
+  align-self: center;
+  display: block;
+  margin: auto;
+}
+
+/* #mydiv {
+  position: fixed;
+  z-index: 100;
+  top: 25%;
+  right: 0%;
+  width: 500px;
+  height: 700px;
+  background-color: rgb(185, 255, 22);
+  filter: drop-shadow(2px 5px 3px rgb(162, 161, 255));
+  text-align: left;
+  padding: 20px;
+  padding-top: 40px;
+  font-weight: 200;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  cursor: grab;
+  color: black;
+  font-weight: 300;
+} */
+
+/* ACCORDION  */
+.container {
+  max-width: 100%;
+}
+
+/* category name */
+dl h3 {
+  font-size: 18px;
+  text-align: left;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+  line-height: 1.7;
+  cursor: pointer;
+  transition: 0.2s linear;
+}
+
+dl h3:hover {
+  transform: translateX(3px);
+}
+
+/* question */
+dt h4 {
+  max-width: 50%;
+  font-size: 16px;
+  line-height: 180%;
+}
+
+/* answer */
+dd p {
+  font-size: 16px;
+  max-width: 75ch;
+  line-height: 180%;
+  padding-left: 29px;
+  padding-bottom: 20px;
+}
+
+.category_content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+dd.answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  border-bottom: 1px solid black;
+}
+
+dt.question {
+  display: flex;
+  cursor: pointer;
+  padding: 15px 20px;
+  font-size: 16px;
+  line-height: 150%;
+  max-width: 100%;
+}
+
+/* arrow  */
+dt.question:after {
+  position: absolute;
+  content: "+";
+  font-weight: 200;
+  font-size: 1.5rem;
+  right: 0;
+  padding-right: 20px;
+}
+
+dt.question.is-open:after {
+  content: "-";
+}
