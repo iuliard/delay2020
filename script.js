@@ -2,7 +2,7 @@ const typedTextSpan = document.querySelector(".typed-text");
 const cursorSpan =
 document.querySelector(".cursor");
 
-const textArray = ["2020","digitalMedia","masterProject", "offline", "exhibition", "tor40", "26.11", "2.12"];
+const textArray = ["2020","digitalMedia","masterProject", "exhibition", "tor40", "güterbahnhofBremen", "26.11 → 2.12"];
 const typingDelay = 120;
 const erasingDelay = 40;
 const newTextDelay = 1000; // Delay between current and next text
@@ -86,7 +86,45 @@ document.addEventListener("DOMContentLoaded", function() { // On DOM Load initia
     //   }
     // }
 
-var accordions = document.getElementsByClassName("question");
+/* 
+MAP-BOX OPEN-CLOSE
+*/
+
+var mapBox = document.getElementById("map-box");
+var mapBoxHandle = document.getElementById("map-box-handle");
+
+
+var boxState = false;
+mapBoxHandle.onclick = function() {showbox()};
+
+function showbox() {
+  if (boxState == true) {
+    addClass(mapBox, "hidden-box");
+    removeClass(mapBox, "showing-box");
+    document.getElementById("map-close").innerHTML = "open(map)";
+    boxState = false;
+    return;
+  }
+  if (boxState == false) {
+    removeClass(mapBox, "hidden-box");
+    addClass(mapBox, "showing-box");
+    document.getElementById("map-close").innerHTML = "close(map)";
+    boxState = true;
+    return;
+  }
+}
+
+/* RANDOM COLOR */
+
+var randomColorBackground = getRandomInt(255);
+var randomColorElements = getRandomInt(255);
+
+let root = document.documentElement;
+root.style.setProperty("--color-background", "hsl(" + randomColorBackground + ",100%,66%)");
+root.style.setProperty("--color-elements", "hsl(" + randomColorElements + ",98%,30%)");
+
+
+var accordions = document.getElementsByClassName("project-description");
 
 for (var i = 0; i < accordions.length; i++) {
   accordions[i].onclick = function() {
@@ -101,4 +139,30 @@ for (var i = 0; i < accordions.length; i++) {
       content.style.maxHeight = content.scrollHeight + "px";
     }
   }
+}
+
+/* class functions */
+
+function hasClass(elem, className) {
+  return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+}
+
+function addClass(elem, className) {
+  if (!hasClass(elem, className)) {
+      elem.className += ' ' + className;
+  }
+}
+
+function removeClass(elem, className) {
+  var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' ';
+  if (hasClass(elem, className)) {
+      while (newClass.indexOf(' ' + className + ' ') >= 0) {
+          newClass = newClass.replace(' ' + className + ' ', ' ');
+      }
+      elem.className = newClass.replace(/^\s+|\s+$/g, '');
+  }
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }

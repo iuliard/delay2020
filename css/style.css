@@ -1,25 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+:root {
+	--color-background: #ff0000;
+	--color-elements: #00ff00;
+}
+
 body {
   font-family: "Prompt", sans-serif;
-  color: rgb(0, 0, 0);
+  color: var(--color-elements);
+  background-color: var(--color-background);
   font-weight: 300;
 }
 
 .info {
-  position: absolute;
-  padding: 20px;
+  position: sticky;
   font-family: "Prompt", sans-serif;
-  font-weight: 200;
-  font-size: 1.5rem;
-  right: 0;
+  font-weight: 600;
+  font-size: 2rem;
+  right: 18px;
+  top: 20px;
+  float: right;
+  width: max-content;
+  cursor: pointer;
 }
 
 .landing {
   position: relative;
-  background-color: #ffffff;
+  background-color: #fff;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   border-bottom: 1px solid black;
 }
 
@@ -33,14 +42,18 @@ body {
 .title {
   margin: 0;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 48%;
+  left: 48%;
+  padding-left: 20px;
+  padding-right: 40px;
   margin-right: -50%;
+  max-width: 100%;
   transform: translate(-50%, -50%);
+  word-break: break-all;
 }
 
 .title p {
-  font-size: 4rem;
+  font-size: 3.8rem;
   text-align: center;
   overflow: hidden;
   padding: 10px;
@@ -90,14 +103,73 @@ body {
   font-weight: 300;
 } */
 
+
+/* MAP BOX */
+
+#map-box{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  filter: drop-shadow(-1px 0px 4px #333);
+}
+
+#map-box-main{
+  width: calc(100% - 52px);
+  height: 100%;
+  background-color: var(--color-background);
+}
+
+#map-box-main img{
+  height: 96%;
+  max-width: 96%;
+  margin: 2%;
+}
+
+#map-box-handle{
+  width: 52px;
+  height: 250px;
+  position: fixed;
+  margin: auto 0;
+  right: 0;
+  top: calc(72% - 125px);
+  background-color: var(--color-background);
+  z-index: 2;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 2px;
+  cursor: pointer;
+}
+
+.hidden-box {
+	transform: translateX( calc(-100% + 48px) );
+	transition: transform 600ms ease;
+}
+
+.showing-box {
+	transform: translateX(0px);
+	transition: transform 600ms ease;
+}
+
+#map-close{
+  writing-mode: vertical-lr;
+  margin: 65px 16px;
+  font-size: 1.2rem;
+  width: max-content;
+  pointer-events: none;
+
+}
+
+
 /* ACCORDION  */
 .container {
   max-width: 100%;
+  background-color: #fff;
 }
 
 /* category name */
 dl h3 {
-  font-size: 18px;
+  font-size: 16px;
   text-align: left;
   padding-bottom: 20px;
   border-bottom: 1px solid black;
@@ -112,17 +184,18 @@ dl h3:hover {
 
 /* question */
 dt h4 {
-  max-width: 50%;
-  font-size: 16px;
+  max-width: 90%;
+  font-size: 18px;
   line-height: 180%;
 }
 
-/* answer */
+/* expand */
 dd p {
-  font-size: 16px;
+  font-size: 18px;
   max-width: 75ch;
-  line-height: 180%;
-  padding-left: 29px;
+  line-height: 170%;
+  padding-left: 60px;
+  padding-right: 45px;
   padding-bottom: 20px;
 }
 
@@ -132,32 +205,32 @@ dd p {
   transition: max-height 0.3s ease-in-out;
 }
 
-dd.answer {
+dd.expand {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
   border-bottom: 1px solid black;
 }
 
-dt.question {
+dt.project-description {
   display: flex;
   cursor: pointer;
-  padding: 15px 20px;
-  font-size: 16px;
+  padding: 15px 60px;
+  font-size: 1.2rem;
   line-height: 150%;
   max-width: 100%;
 }
 
 /* arrow  */
-dt.question:after {
+dt.project-description:after {
   position: absolute;
   content: "+";
-  font-weight: 200;
-  font-size: 1.5rem;
+  font-weight: 300;
+  font-size: 2.5rem;
   right: 0;
   padding-right: 20px;
 }
 
-dt.question.is-open:after {
+dt.project-description.is-open:after {
   content: "-";
 }
