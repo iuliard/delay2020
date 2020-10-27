@@ -5,6 +5,11 @@
 	--color-elements: #FF5C00;
 }
 
+::selection{
+  background-color: var(--color-elements);
+  color: white;
+}
+
 body {
   font-family: "Prompt", sans-serif;
   color: var(--color-elements);
