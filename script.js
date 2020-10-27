@@ -101,28 +101,20 @@ function showbox() {
   if (boxState == true) {
     addClass(mapBox, "hidden-box");
     removeClass(mapBox, "showing-box");
-    document.getElementById("map-close").innerHTML = "open(map)";
+    document.getElementById("map-close").innerHTML = "show<br>(map)";
     boxState = false;
     return;
   }
   if (boxState == false) {
     removeClass(mapBox, "hidden-box");
     addClass(mapBox, "showing-box");
-    document.getElementById("map-close").innerHTML = "close(map)";
+    document.getElementById("map-close").innerHTML = "hide<br>(map)";
     boxState = true;
     return;
   }
 }
 
 /* RANDOM COLOR */
-
-var randomColorBackground = getRandomInt(255);
-var randomColorElements = getRandomInt(255);
-
-let root = document.documentElement;
-root.style.setProperty("--color-background", "hsl(" + randomColorBackground + ",100%,66%)");
-root.style.setProperty("--color-elements", "hsl(" + randomColorElements + ",98%,30%)");
-
 
 var accordions = document.getElementsByClassName("project-description");
 

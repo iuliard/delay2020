@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-	--color-background: #ff0000;
-	--color-elements: #00ff00;
+	--color-background: white;
+	--color-elements: #FF5C00;
 }
 
 body {
@@ -112,125 +112,137 @@ body {
   position: fixed;
   top: 0;
   z-index: 3;
-  filter: drop-shadow(-1px 0px 4px #333);
+  background-color: var(--color-elements);
+
+  border-bottom-left-radius: 64px;
 }
 
-#map-box-main{
-  width: calc(100% - 52px);
-  height: 100%;
-  background-color: var(--color-background);
-}
-
-#map-box-main img{
-  height: 96%;
-  max-width: 96%;
-  margin: 2%;
+#map-box img{
+  height: calc(90% - 8px);
+  max-width: 98%;
+  margin: 1%;
+  float: right;
 }
 
 #map-box-handle{
-  width: 52px;
-  height: 250px;
-  position: fixed;
+  width: 64px;
+  height: 64px;
+  position: absolute;
   margin: auto 0;
-  right: 0;
-  top: calc(72% - 125px);
-  background-color: var(--color-background);
+  left: 0;
+  bottom:0;
+  background-color: transparent;
+  border-radius: 20px;
   z-index: 2;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 2px;
   cursor: pointer;
 }
 
 .hidden-box {
-	transform: translateX( calc(-100% + 48px) );
-	transition: transform 600ms ease;
+	transform: translateX( calc(100% - 74px) ) translateY( calc(-100% + 74px));
+	transition: transform 800ms ease-out;
 }
 
 .showing-box {
 	transform: translateX(0px);
-	transition: transform 600ms ease;
+	transition: transform 800ms ease-out;
 }
 
 #map-close{
-  writing-mode: vertical-lr;
-  margin: 65px 16px;
-  font-size: 1.2rem;
+
+  font-size: 1.1em;
   width: max-content;
   pointer-events: none;
-
+  position: absolute;
+  bottom: 22px;
+  right: 0px;
+  text-align: center;
+  transform: rotate(45deg);
+  color: white;
 }
 
 
 /* ACCORDION  */
-.container {
-  max-width: 100%;
-  background-color: #fff;
+
+dt {
+  cursor:pointer;
+  position:relative;
+  display:grid;
+  padding:20px;
+  grid-template-columns: 30px 2fr 1fr 30px;  
+  row-gap: 10px;
+  column-gap: 20px;
 }
 
-/* category name */
-dl h3 {
-  font-size: 16px;
-  text-align: left;
-  padding-bottom: 20px;
-  border-bottom: 1px solid black;
-  line-height: 1.7;
-  cursor: pointer;
-  transition: 0.2s linear;
-}
 
-dl h3:hover {
-  transform: translateX(3px);
-}
-
-/* question */
-dt h4 {
+/* project name */
+.project {
   max-width: 90%;
-  font-size: 18px;
-  line-height: 180%;
+  /* line-height: 160%; can you have a look at this? on mobile, it makes se border bottom disappear when i open the accordion  */
 }
+
+.number {
+  font-style: italic;
+} 
 
 /* expand */
+.expand {
+  display:grid;
+  grid-template-columns: 30px 2fr 1fr 30px;
+  row-gap: 20px;
+  column-gap: 20px;
+  padding: 0px 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  border-bottom: 1px solid #FF5C00;
+}
+
 dd p {
-  font-size: 18px;
-  max-width: 75ch;
-  line-height: 170%;
-  padding-left: 60px;
-  padding-right: 45px;
+font-size: 18px;
+max-width: 70ch;
+line-height: 140%;
+padding-bottom: 10px;
+padding-top: 2.5em;
+grid-column: 2;
+grid-row: 1;
+}
+
+dd img {
+  grid-column: 3 / 5;
   padding-bottom: 20px;
 }
 
-.category_content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
-}
-
-dd.expand {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
-  border-bottom: 1px solid black;
-}
-
-dt.project-description {
-  display: flex;
+.play {
   cursor: pointer;
-  padding: 15px 60px;
-  font-size: 1.2rem;
-  line-height: 150%;
-  max-width: 100%;
+  width:1.2em;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 /* arrow  */
-dt.project-description:after {
+.project-description:after {
   position: absolute;
   content: "+";
-  font-weight: 300;
-  font-size: 2.5rem;
+  font-weight: 100;
+  font-size: 3em;
   right: 0;
-  padding-right: 20px;
+  padding-right: 30px;
+  font-family: var(--font);
 }
 
-dt.project-description.is-open:after {
+.project-description.is-open:after {
   content: "-";
+}
+
+
+@media only screen and (max-width: 720px) {
+
+  .expand, dt {
+    grid-template-columns: 1fr;
+  }
+
+  dd p, dd img, .play{
+    grid-column: 1;
+  }
+
 }
