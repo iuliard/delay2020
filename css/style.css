@@ -123,10 +123,20 @@ body {
 }
 
 #map-box img{
-  height: calc(90% - 8px);
-  max-width: 98%;
   margin: 1%;
   float: right;
+}
+
+#map-horizontal{
+  display: block;
+  width: 98%;
+  max-height: 90%;
+}
+
+#map-vertical{
+  display: none;
+  height: calc(90% - 8px);
+  max-width: 98%;
 }
 
 #map-box-handle{
@@ -251,3 +261,16 @@ dd img {
   }
 
 }
+
+@media only screen and (max-width: 960px) {
+
+  #map-horizontal{
+    display: none;
+  }
+  
+  #map-vertical{
+    display: block;
+  }
+
+}
+
